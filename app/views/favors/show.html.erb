@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @favor.item %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @favor.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @favor.price %>
+</p>
+
+<p>
+  <strong>Requestlive:</strong>
+  <%= @favor.requestLive %>
+</p>
+
+<p>
+  <strong>Addressid:</strong>
+  <%= @favor.addressId %>
+</p>
+
+<%= link_to 'Edit', edit_favor_path(@favor) %> |
+<%= link_to 'Back', favors_path %>

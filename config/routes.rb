@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :address_users
+  resources :favor_users
+  resources :favors
+  resources :credit_cards
+  resources :addresses
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
