@@ -6,6 +6,7 @@ class CreateFavors < ActiveRecord::Migration
       t.float :price
       t.integer :requestLive
       t.integer :address_id
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end
