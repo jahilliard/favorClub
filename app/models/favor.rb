@@ -1,8 +1,9 @@
 class Favor < ActiveRecord::Base
   # Relationships
   # -----------------------------
-  has_many :users, :through => :favors_user
+  has_many :users, :through => :favorUser
   has_one :address
+  has_many :favorUser
 
   # Scopes
   # -----------------------------

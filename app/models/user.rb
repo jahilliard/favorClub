@@ -1,13 +1,16 @@
 class User < ActiveRecord::Base
   # Relationships
   # -----------------------------
-  has_many :addresses, :through => :address_user
+  has_many :addresses, :through => :addressUser
+  has_many :addressUser
+  has_many :favorUser
   has_many :creditcards
-  has_many :favors, :through => :favors_user
+  has_many :favors, :through => :favorUser
 
   # Scopes
   # -----------------------------
   scope :alphabetical, -> { order("lname, fname") }
+  scope :active, -> { where("active is true") }
 
   # Validations
   # -----------------------------

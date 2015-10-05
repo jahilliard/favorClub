@@ -1,4 +1,4 @@
-class FavorUsersController < ApplicationController
+class FavorUsersController < API::V1::BaseController
   before_action :set_favor_user, only: [:show, :edit, :update, :destroy]
 
   # GET /favor_users

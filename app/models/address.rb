@@ -1,14 +1,15 @@
 class Address < ActiveRecord::Base
   # Relationships
   # -----------------------------
-  has_many :users, :through => :addresses_users
+  has_many :users, :through => :addressUser
+  has_many :addressUser
 
   # Scopes
   # -----------------------------
 
   # Validations
   # -----------------------------
-  validates_presence_of :streetAdress, :city, :zip, :lat, :long, :state
+  validates_presence_of :streetAddress, :city, :zipCode, :lat, :long, :state
 
 
   # Other Methods

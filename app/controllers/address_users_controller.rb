@@ -1,4 +1,4 @@
-class AddressUsersController < ApplicationController
+class AddressUsersController < API::V1::BaseController
   before_action :set_address_user, only: [:show, :edit, :update, :destroy]
 
   # GET /address_users
