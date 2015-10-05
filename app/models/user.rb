@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
   validates_presence_of :password, on: :create
   validates_confirmation_of :password, message: "does not match"
   validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
+  validates :auth_token, uniqueness: true
+
+
+  before_create :generate_authentication_token!
 
   # Other methods
   # -----------------------------
@@ -31,6 +35,12 @@ class User < ActiveRecord::Base
   def name
     lname + ", " + fname
   end
+
+  def generate_authentication_token!
+  begin
+    self.auth_token = Devise.friendly_token
+  end while self.class.exists?(auth_token: auth_token)
+end
 
   def modRating(exp_rating)
     if exp_rating == true

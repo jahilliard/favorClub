@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'geocoder'
-gem 'cors'
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

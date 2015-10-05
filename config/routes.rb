@@ -1,10 +1,26 @@
 Rails.application.routes.draw do
   resources :address_users
   resources :favor_users
-  resources :favors
-  resources :credit_cards
-  resources :addresses
-  resources :users
+  
+  namespace :api, :defaults => {:format => :json} do
+    namespace :v1 do
+      resources :favors
+      resources :credit_cards
+      resources :addresses
+      resources :users
+    end
+  end
+
+
+  # namespace :api, :defaults => {:format => :json} do
+  #   namespace :v1 do
+  #
+  #     controller :favors, path: '/favors' do
+  #       match 'post_action', via: [ :post, :options]
+  #     end
+  #
+  #   end
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

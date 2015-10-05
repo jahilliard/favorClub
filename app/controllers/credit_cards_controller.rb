@@ -1,4 +1,4 @@
-class CreditCardsController < API::V1::BaseController
+class CreditCardsController < ApplicationController
   before_action :set_credit_card, only: [:show, :edit, :update, :destroy]
 
   # GET /credit_cards
