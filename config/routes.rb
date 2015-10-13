@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
+  resources :users
   resources :address_users
   resources :favor_users
-  
-  namespace :api, :defaults => {:format => :json} do
-    namespace :v1 do
-      resources :favors
-      resources :credit_cards
-      resources :addresses
-      resources :users
-    end
-  end
+  resources :favors, :defaults => {:format => :json}
+  resources :credit_cards, :defaults => {:format => :json}
+  resources :addresses, :defaults => {:format => :json}
+  resources :users, :defaults => {:format => :json}
+  resources :sessions, :only => [:create, :destroy], :defaults => {:format => :json}
+  get 'users/login/:username' => 'users#login', :defaults => {:format => :json}
 
 
   # namespace :api, :defaults => {:format => :json} do

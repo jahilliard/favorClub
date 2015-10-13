@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   # -----------------------------
   scope :alphabetical, -> { order("lname, fname") }
   scope :active, -> { where("active is true") }
+  scope :username, -> (username){ where("username = ?", username) }
 
   # Validations
   # -----------------------------
@@ -37,10 +38,10 @@ class User < ActiveRecord::Base
   end
 
   def generate_authentication_token!
-  begin
-    self.auth_token = Devise.friendly_token
-  end while self.class.exists?(auth_token: auth_token)
-end
+    tok = Devise.friendly_token
+    self.auth_token = tok
+    self.save!
+  end
 
   def modRating(exp_rating)
     if exp_rating == true
@@ -52,7 +53,11 @@ end
   end
 
   # login by email address
-  def self.authenticate(email, password)
-    find_by_email(email).try(password)
+  def self.authenticate(username, password)
+    if find_by_username(username).try(password)
+      return true
+    else
+      return false
+    end
   end
 end
