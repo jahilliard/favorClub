@@ -8,13 +8,17 @@ class UsersController < ApplicationController
   end
 
   def login
-    if User.authenticate(params[:username], params[:password])
-      user = User.username(params[:username])
-      puts("asdfasd " + user.first.to_json)
-      user.first.generate_authentication_token!
-      render json: user[0].to_json, status: 200
+    if params[:isSign]
+      if User.authenticate(params[:username], params[:password])
+        user = User.username(params[:username])
+        user.first.generate_authentication_token!
+        render json: user[0].to_json, status: 200
+      else
+        render json: {error: "User Not Authenticated"}, status: 302
+      end
     else
-      render json: {error: "User Not Authenticated"}, status: 302
+      puts(params)
+      redirect_to :action => "create", params => params
     end
   end
 
@@ -36,7 +40,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         # format.html { redirect_to @user, notice: 'User was successfully created.' }

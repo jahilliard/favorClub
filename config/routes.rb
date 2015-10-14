@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, :defaults => {:format => :json}
   resources :sessions, :only => [:create, :destroy], :defaults => {:format => :json}
   get 'users/login/:username' => 'users#login', :defaults => {:format => :json}
+  get 'users/signup/:username' => 'users#login', :defaults => {:format => :json}
 
 
   # namespace :api, :defaults => {:format => :json} do

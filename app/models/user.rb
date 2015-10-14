@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   # Validations
   # -----------------------------
   # make sure required fields are present
-  validates_presence_of :fname, :lname, :email
+  validates_presence_of :email, :password
   validates_uniqueness_of :email, allow_blank: true
   validates_format_of :email, :with => /\A[\w]([^@\s,;]+)@(([a-z0-9.-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i, :message => "is not a valid format", :allow_blank => true
   validates_presence_of :password, on: :create
