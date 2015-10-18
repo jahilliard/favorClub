@@ -15,8 +15,8 @@ class FavorUser < ActiveRecord::Base
   # Validations
   # -----------------------------
   validates_presence_of :user, :favor
-  validate :user_is_active_in_system
-  validate :favor_is_current_in_system, on: :create
+  # validate :user_is_active_in_system
+  # validate :favor_is_current_in_system, on: :create
 
   # Other methods
   # -----------------------------

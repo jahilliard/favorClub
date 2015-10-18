@@ -13,7 +13,7 @@ class Favor < ActiveRecord::Base
 
   # Validations
   # -----------------------------
-  validates_presence_of :item, :description, :price, :requestLive, :user, :address
+  # validates_presence_of :item, :description, :price, :requestLive, :user, :address
 
 
   # Other Methods
@@ -21,6 +21,19 @@ class Favor < ActiveRecord::Base
   def self.nearLocation
     return Favor.near([lat, long], 5).newestFavor.active.to_a
   end
+
+  def self.usersWithOpenFavors
+    favUser = []
+    (self.all).each do |e|
+      h = {}
+      h[:fname] = e.users[0].fname
+      h[:lname] = e.users[0].lname
+      h[:favor] = e
+      favUser << h
+    end
+    return favUser
+  end
+
 
   def setInactive
     Favor.active.each do |a|

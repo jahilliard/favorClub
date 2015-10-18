@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def login
+    puts(params)
     if params[:isSign]
       if User.authenticate(params[:username], params[:password])
         user = User.username(params[:username])

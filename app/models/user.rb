@@ -16,16 +16,16 @@ class User < ActiveRecord::Base
   # Validations
   # -----------------------------
   # make sure required fields are present
-  validates_presence_of :email, :password
-  validates_uniqueness_of :email, allow_blank: true
+  validates_presence_of :username, :password
+  # validates_uniqueness_of :email, allow_blank: true
   validates_format_of :email, :with => /\A[\w]([^@\s,;]+)@(([a-z0-9.-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i, :message => "is not a valid format", :allow_blank => true
   validates_presence_of :password, on: :create
   validates_confirmation_of :password, message: "does not match"
   validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
-  validates :auth_token, uniqueness: true
+  # validates :auth_token, uniqueness: true
 
 
-  before_create :generate_authentication_token!
+  before_save :generate_authentication_token!
 
   # Other methods
   # -----------------------------

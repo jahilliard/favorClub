@@ -4,7 +4,7 @@ class FavorsController < ApplicationController
   # GET /favors
   # GET /favors.json
   def index
-    @favors = Favor.all
+    render json: {favors: Favor.usersWithOpenFavors}, status: 200
   end
 
   # GET /favors/1
